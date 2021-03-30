@@ -6,9 +6,9 @@ export default class Header extends Component {
             <header>
                 <div className="titulo">Memoria WS</div>
                 <div>
-                    <button className="btn btn-light">Restart</button>
+                    <button className="btn btn-light" onClick={this.props.reset}>Restart</button>
                 </div>
-                <div className="titulo">Intentos:</div>
+                <div className="titulo">Intentos: {this.props.count}</div>
             </header>
         )
     }

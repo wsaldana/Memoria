@@ -6,7 +6,7 @@ import deckBuilder from '../utils/buildDeck'
 
 const getInitState = () => {
     const deck = deckBuilder();
-    return {deck, selected:[], compared:false}
+    return {deck, selected:[], compared:false, count:0}
 }
 
 class App extends Component {
@@ -19,7 +19,10 @@ class App extends Component {
     render(){
         return(
             <div>
-                <Header />
+                <Header 
+                    count = {this.state.count}
+                    reset = {() => this.reset()}
+                />
                 <CardGrid 
                     deck = {this.state.deck}
                     selected = {this.state.selected}
@@ -30,11 +33,9 @@ class App extends Component {
     }
 
     selectCard(card){
-        console.log("yeeeeeees")
         if(this.state.compared || this.state.selected.indexOf(card) > -1 || card.guess){
             return;
         }
-        console.log("1111111111")
         const selected = [...this.state.selected, card];
         this.setState({
             selected
@@ -43,7 +44,6 @@ class App extends Component {
         if(selected.length === 2){
             this.compareCards(selected);
         }
-        console.log(selected)
     }
 
     compareCards(selected){
@@ -60,13 +60,26 @@ class App extends Component {
                     return {...card, guess: true};
                 })
             }
+            
+            this.win(deck);
 
             this.setState({
                 selected: [],
                 deck,
-                compared: false
+                compared: false,
+                count: this.state.count + 1
             })
         }, 1000)
+    }
+
+    win(deck){
+        if(deck.filter((card) => !card.guess).length === 0){
+            alert('You Won the DUEL! \nAttempts: '+this.state.count);
+        }
+    }
+
+    reset(){
+        this.setState(getInitState());
     }
 } 
 
