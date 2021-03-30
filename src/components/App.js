@@ -34,6 +34,7 @@ class App extends Component {
         if(this.state.compared || this.state.selected.indexOf(card) > -1 || card.guess){
             return;
         }
+        console.log("1111111111")
         const selected = [...this.state.selected, card];
         this.setState({
             selected
@@ -42,6 +43,7 @@ class App extends Component {
         if(selected.length === 2){
             this.compareCards(selected);
         }
+        console.log(selected)
     }
 
     compareCards(selected){

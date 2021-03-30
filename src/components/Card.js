@@ -22,7 +22,7 @@ export default class Card extends Component {
     render() {
         return (
             <div className="card" onClick={this.props.selectCard}>
-                <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
+                <ReactCardFlip isFlipped={this.props.guess || this.props.isBeingCompared} flipDirection="vertical">
                     <img
                         src={imgBack}
                         onClick={this.handleClick}
