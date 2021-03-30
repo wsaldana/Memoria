@@ -1,0 +1,64 @@
+@import "~bootstrap/scss/bootstrap";
+
+$defaultFont: Tahoma;
+
+body {
+  background: #353535;
+  max-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  line-height: 1;
+  font-family: "Patrick Hand", sans-serif;
+}
+  
+p {
+  text-align: right;
+  font-size: 50px;
+  color: #999;
+  margin-top: 0;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+p strong {
+  font-size: 14px;
+  color: #777;
+}
+
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background-color: #1b1b1b;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.titulo {
+  font-size: 25px;
+  color: white;
+  font-family: $defaultFont;
+}
+
+.cardGrid {
+  margin-top: 60px;
+  height: 90%;
+  color: white;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-content: space-around;
+  grid-gap: 50px 50px;
+  transform:rotate(90deg);
+}
+
+img {
+  max-height: 20vh;
+}
